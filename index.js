@@ -76,6 +76,34 @@ app.get("/:code",async(req,res)=>{
     }
 })
 
+// all data api
+app.get("/all/record",async(req,res)=>{
+    try {
+       const result = await CustomURLModel.find({})
+       res.json({result:result})
+    } catch (error) {
+        return res.status(500).json({
+            message:"Erro while get ALl Record",
+            success:false
+        })
+    }
+})
+
+
+// delete perticlur record
+app.delete("/delete/record/:id",async(req,res)=>{
+    try {
+        const {id} = req.params;
+        const result = await CustomURLModel.findByIdAndDelete(id)
+        res.json({result:result})
+    } catch (error) {
+        return res.status(500).json({
+            message:"Erro while get ALl Record",
+            success:false
+        })
+    }
+})
+
 
 //redireact test
 
