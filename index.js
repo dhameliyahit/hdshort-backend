@@ -44,7 +44,7 @@ app.post("/api/v1/shortner", async (req, res) => {
 
         return res.status(200).json({
             shortURL: code,
-            backEndURL: `${req.protocol}://${req.get("host")}`,
+            backEndURL: `${req.protocol}://${req.get("host")}/${code}`,
             originalURL: originalURL,
             message: "Short url Successfully Add",
             success: true
@@ -53,7 +53,7 @@ app.post("/api/v1/shortner", async (req, res) => {
     } catch (error) {
         console.log(error);
         return res.status(500).json({
-            message: "Erro while Add short Name",
+            message: "Error while Add short Name",
             success: false
         })
     }
